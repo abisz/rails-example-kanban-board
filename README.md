@@ -40,6 +40,14 @@ routes`. Now change `config/routes.rb` to
 
 How do the URLs change?
 
+Zuerst sind Einzelroutes für Boards und Cards wo jede Klasse nur mit der passenden Id angesprochen werden kann.
+Durch die Änderung wird die Beziehung zwischen den Entititäten in der URL sichtbar.
+Anfragen zu Cardroutes benötigen sowohl die Card_id als auch die Board_id.
+
+Beispiel: 
+```
+board_cards - GET - /boards/:board_id/cards(.:format) - cards#index
+```
 
 === Changes in `cards_controller` ===
 
