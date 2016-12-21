@@ -20,6 +20,14 @@ is deleted.  Delete a board and study the log file: how are the
 cards deleted? Does Rails use referential integrity in the
 database?
 
+1. Das passende Board wird selected
+2. Beginn Transaktion
+3. Alle zu dem Board gehörenden Cards werden geholt
+4. Diese Cards werden gelöscht
+5. Das Board wird gelöscht
+6. Transaktion wird commited
+
+Dadurch dass alle Löschoperationen innerhalb der Transaktion stattfinden, ist referentielle Integrität gewährleistet.
 
 === Nested Ressources === 
 
