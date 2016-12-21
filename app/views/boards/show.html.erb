@@ -1,46 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<h1 class="kanban-title">
   <strong>Title:</strong>
   <%= @board.title %>
-</p>
+</h1>
 
-
-<div class="kanban-column">
-  <h2>Backlog</h2>
-  <ul>
-  <% @cards.where(status: 'backlog').each do |card| %>
-        <li><%= link_to card.title, edit_board_card_path(@board.id, card) %></li>
-  <% end %>
-  </ul>
-</div>
-
-<div class="kanban-column">
-  <h2>In Progress</h2>
-  <ul>
-    <% @cards.where(status: 'in_progress').each do |card| %>
-        <li><%= link_to card.title, edit_board_card_path(@board.id, card) %></li>
+<div class="kanban-board">
+  <div class="kanban-column">
+    <h2>Backlog</h2>
+    <ul>
+    <% @cards.where(status: 'backlog').each do |card| %>
+          <li><%= link_to card.title, edit_board_card_path(@board.id, card) %></li>
     <% end %>
-  </ul>
+    </ul>
+  </div>
+
+  <div class="kanban-column">
+    <h2>In Progress</h2>
+    <ul>
+      <% @cards.where(status: 'in_progress').each do |card| %>
+          <li><%= link_to card.title, edit_board_card_path(@board.id, card) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="kanban-column">
+    <h2>In Review</h2>
+    <ul>
+      <% @cards.where(status: 'in_review').each do |card| %>
+          <li><%= link_to card.title, edit_board_card_path(@board.id, card) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="kanban-column">
+    <h2>Done</h2>
+    <ul>
+      <% @cards.where(status: 'done').each do |card| %>
+          <li><%= link_to card.title, edit_board_card_path(@board.id, card) %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
-<div class="kanban-column">
-  <h2>In Review</h2>
-  <ul>
-    <% @cards.where(status: 'in_review').each do |card| %>
-        <li><%= link_to card.title, edit_board_card_path(@board.id, card) %></li>
-    <% end %>
-  </ul>
+<div class="footer-links">
+  <%= link_to 'Edit', edit_board_path(@board) %> |
+  <%= link_to 'Back', boards_path %>
 </div>
-
-<div class="kanban-column">
-  <h2>Done</h2>
-  <ul>
-    <% @cards.where(status: 'done').each do |card| %>
-        <li><%= link_to card.title, edit_board_card_path(@board.id, card) %></li>
-    <% end %>
-  </ul>
-</div>
-
-<%= link_to 'Edit', edit_board_path(@board) %> |
-<%= link_to 'Back', boards_path %>
